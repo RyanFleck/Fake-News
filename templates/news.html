@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>CNC | {{category}}: {{title}}</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,600" rel="stylesheet">
+    <style>
+        body {
+        background: #222;
+        color: #DDD;
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: 'IBM Plex Mono', Verdana, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 20px;
+        }
+        .quiet {
+            color: #555;
+        text-align: right;
+        }
+        a{
+            color: #9393ff;
+        text-decoration: none;
+        }
+        @media only screen and (max-width : 700px) {
+        body{
+            font-size: 18px;
+        }
+        }
+        @media only screen and (max-width : 500px) {
+        body{
+            font-size: 16px;
+        }
+        }
+    </style>
+    </head>
+    
+    <body>
+        <h3>{{category}}</h3>
+        <h1>{{title}}</h1>
+        {{content}}
+        <br />
+    </body>
+</html>
+
