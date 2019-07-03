@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import random
 import time
 import messages
+import os
 
 app = Flask(__name__)
 
@@ -28,11 +29,12 @@ def couldnt_find_page(e):
         'Friend incapable of pasting URLs correctly, ends up on 404 page')
 
 
+
 def news(category, title, content=""):
     # Generate body here.
     if not content:
         content='This is the news body.'
-    return render_template('news.html',**locals())
+    return render_template('single-post.html',**locals())
 
 
 if __name__ == '__main__':
