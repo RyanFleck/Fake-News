@@ -46,7 +46,7 @@ def news(category, title, content=""):
     while '%20' in title:
         title = unquote(title)
 
-    title_encoded = title.replace(' ','-') 
+    title_encoded = quote(title.replace(' ','-'))
     
     if( category ):
         return redirect('/g/'+quote(category)+'/'+title_encoded)
