@@ -22,6 +22,17 @@ def article(title):
 def categorized_article(cat, title):
     return news(cat.strip().title(), title.strip().title())
 
+@app.route('/g/<string:ncat>/<string:ntitle>')
+def global_article_redirect(ncat,ntitle):
+
+    category = unquote(ncat)
+    content=messages.fake_news_intro()
+    title = unquote(ntitle.replace('-',' '))
+    date = time.strftime("%B %-d, %Y", time.localtime()) 
+    commenter_1, comment_1 = ('Timathon Kazercowitch', 'I find the state of modern journalism highly concerning: we should do everything we can to support the journalists getting fired today!')
+    commenter_2, comment_2 = ('Nida Sireone', 'Why bother? Most of them write about vaginas anyway.')
+    return render_template('single-post.html',**locals())
+
 
 @app.errorhandler(404)
 def couldnt_find_page(e):
@@ -30,19 +41,18 @@ def couldnt_find_page(e):
         'Friend incapable of pasting URLs correctly, ends up on 404 page')
 
 
-
 def news(category, title, content=""):
-    # Generate body here.
+
     while '%20' in title:
         title = unquote(title)
-    if not content:
-        content=messages.fake_news_intro()
 
     title_encoded = title.replace(' ','-') 
-    date = time.strftime("%B %-d, %Y", time.localtime()) 
-    commenter_1, comment_1 = ('Timathon Kazercowitch', 'I find the state of modern journalism highly concerning: we should do everything we can to support the journalists getting fired today!')
-    commenter_2, comment_2 = ('Nida Sireone', 'Why bother? Most of them write about vaginas anyway.')
-    return render_template('single-post.html',**locals())
+    
+    if( category ):
+        return redirect('/g/'+quote(category)+'/'+title_encoded)
+    else:
+        return redirect('/g/news/'+title_encoded)
+    # 
 
 
 if __name__ == '__main__':
