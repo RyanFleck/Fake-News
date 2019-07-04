@@ -3,6 +3,7 @@ import random
 import time
 import messages
 import os
+from urllib.parse import unquote
 
 app = Flask(__name__)
 
@@ -32,6 +33,8 @@ def couldnt_find_page(e):
 
 def news(category, title, content=""):
     # Generate body here.
+    while '%20' in title:
+        title = unquote(title)
     if not content:
         content=messages.fake_news_intro()
 
