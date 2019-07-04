@@ -11,6 +11,32 @@
     <!-- Title  -->
     <title>The Gazette | {{title}}</title>
 
+    <script type="text/javascript">
+        var title = "{{title_encoded}}";
+        var encoded = encodeURI(title);
+        console.log(title+' => '+encodeURI(title)); 
+        console.log('Window.location: '+window.location);
+
+        if( title.split(" ").length == 1){
+           console.log('Title is length 1.'); 
+        }else if( title.indexOf('%20') >= 0 ){
+            console.log('Redirecting to page/'+encodeURI(title)); 
+            // window.location.assign(encoded);
+            window.history.pushState({page: "another"}, "another page", "example.html");
+        }else{
+            window.history.pushState({page: "another"}, "another page", "example.html");
+        
+        }
+        console.log('This is Fake News.');
+
+    </script>
+
+    <!-- Twitter & FB Meta -->
+    <meta name="twitter:title" content="{{title}} - The Gazette" />
+    <meta name="og:title" content="{{title}} - The Gazette" />
+    <meta name="og:description" content="{{date}} - The Gazette reports on the latest developments in '{{title}}' today." />
+    <meta name="twitter:description" content="{{date}} - The Gazette reports on the latest developments in '{{title}}' today." />
+
     <!-- Favicon  -->
     <link rel="icon" href="/static/img/core-img/favicon.ico">
 

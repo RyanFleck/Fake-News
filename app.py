@@ -1,25 +1,28 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import random
 import time
 import messages
 import os
-from urllib.parse import unquote
+from urllib.parse import unquote, quote
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
+    redirect("/test", code=302)
     return news('Crime', 'Modern Journalism', messages.fake_news_intro())
 
 
 @app.route('/<string:title>')
 def article(title):
+    redirect("/test", code=302)
     return news('News', title.strip().title())
 
 
 @app.route('/<string:cat>/<string:title>')
 def categorized_article(cat, title):
+    redirect("/test", code=302)
     return news(cat.strip().title(), title.strip().title())
 
 
@@ -38,6 +41,7 @@ def news(category, title, content=""):
     if not content:
         content=messages.fake_news_intro()
 
+    title_encoded = quote(title)
     date = time.strftime("%B %-d, %Y", time.localtime()) 
     commenter_1, comment_1 = ('Timathon Kazercowitch', 'I find the state of modern journalism highly concerning: we should do everything we can to support the journalists getting fired today!')
     commenter_2, comment_2 = ('Nida Sireone', 'Why bother? Most of them write about vaginas anyway.')
