@@ -17,7 +17,10 @@ example: (site name)/Crime/Friend Drinks Too Much
 '''
 
 def fake_news_intro():
-    return '''What a time we live in. Here is a tool to use and enjoy after the
+    return '''In a breaking turn of events, it was announced just three days ago that
+    a tremendous turn of events had taken place. In just a few short years, nobody believed
+    that our society would ever see the levels of everything we have been experiencing. 
+    Ha. What a time we live in. Here is a tool to use and enjoy after the
     nihilism really sets in, just to mess with your friends. Use by typing whatever
     you want after the URL, for instance, '(site)/dog steals seventeen ham sandwiches'
     or '(site)/how did (friend) mess up so bad?'. Alternatively, you can also provide

@@ -33,7 +33,11 @@ def couldnt_find_page(e):
 def news(category, title, content=""):
     # Generate body here.
     if not content:
-        content='This is the news body.'
+        content=messages.fake_news_intro()
+
+    date = time.strftime("%B %-d, %Y", time.localtime()) 
+    commenter_1, comment_1 = ('Timathon Kazercowitch', 'I find the state of modern journalism highly concerning: we should do everything we can to support the journalists getting fired today!')
+    commenter_2, comment_2 = ('Nida Sireone', 'Why bother? Most of them write about vaginas anyway.')
     return render_template('single-post.html',**locals())
 
 
