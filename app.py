@@ -9,7 +9,6 @@ import messages
 app = Flask(__name__)
 
 
-
 @app.route('/')
 def index():
     return news('Crime', 'Modern Journalism')
@@ -27,6 +26,7 @@ def final_article_redirect(ncat, ntitle):
     if ' ' in ntitle or ' ' in ncat:
         return news(ncat.strip().title(), ntitle.strip().title())
 
+    baseurl = 'https://the-gazette.herokuapp.com'
     category = decode(ncat)
     content = messages.fake_news_intro()
     title = decode(ntitle)
