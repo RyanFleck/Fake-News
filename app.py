@@ -18,6 +18,9 @@ def index():
 def article(title):
     return news('News', title.strip().title())
 
+@app.route('/g/<string:cat>/<string:title>')
+def legacy_redirect(cat, title):
+    return news(cat.strip().title(), title.strip().title())
 
 @app.route('/<string:ncat>/<string:ntitle>')
 def final_article_redirect(ncat, ntitle):
