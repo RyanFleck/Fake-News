@@ -9,9 +9,10 @@ import messages
 app = Flask(__name__)
 
 
+
 @app.route('/')
 def index():
-    return news('Crime', 'Modern Journalism', messages.fake_news_intro())
+    return news('Crime', 'Modern Journalism')
 
 
 @app.route('/<string:title>')
@@ -19,13 +20,8 @@ def article(title):
     return news('News', title.strip().title())
 
 
-@app.route('/<string:cat>/<string:title>')
-def categorized_article(cat, title):
-    return news(cat.strip().title(), title.strip().title())
-
-
-@app.route('/g/<string:ncat>/<string:ntitle>')
-def global_article_redirect(ncat, ntitle):
+@app.route('/<string:ncat>/<string:ntitle>')
+def final_article_redirect(ncat, ntitle):
     '''After rewriting the URL, returns the formatted HTML template.'''
 
     if ' ' in ntitle or ' ' in ncat:
@@ -45,11 +41,11 @@ def global_article_redirect(ncat, ntitle):
 @app.errorhandler(404)
 def couldnt_find_page(e):
     return news(
-        'Crime',
-        'Friend incapable of pasting URLs correctly, ends up on 404 page')
+        'travesty',
+        'Person utterly incapable of pasting links in a browser ends up on 404 page of fake news website')
 
 
-def news(category, title, content=""):
+def news(category, title):
 
     while '%20' in title:
         title = decode(title)
@@ -57,12 +53,12 @@ def news(category, title, content=""):
     while ' ' in title:
         title = encode(title)
 
-    title_encoded = encode(title) 
+    title_encoded = encode(title)
 
     if(category):
-        return redirect('/g/' + encode(category) + '/' + title_encoded)
+        return redirect('/' + encode(category) + '/' + title_encoded)
     else:
-        return redirect('/g/news/' + title_encoded)
+        return redirect('/news/' + title_encoded)
 
 
 def encode(string):
