@@ -1,5 +1,7 @@
 # Fake-News
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5cb366c948a647be83014189ce67114a)](https://app.codacy.com/manual/RyanFleck/Fake-News?utm_source=github.com&utm_medium=referral&utm_content=RyanFleck/Fake-News&utm_campaign=Badge_Grade_Settings)
+
 **Usage:**
 1. Paste in browser: `https://the-gazette.herokuapp.com/<title of fake news article, spaces and all>`
 2. Additionaly, you can specify a category: `https://the-gazette.herokuapp.com/<category>/<title>`
